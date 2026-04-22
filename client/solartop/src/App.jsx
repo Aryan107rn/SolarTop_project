@@ -1,7 +1,16 @@
+import Navbar from './components/Navbar'
+import Hero from './sections/Hero'
+import Services from './sections/Services'
+import Projects from './sections/Projects'
+// add <Projects /> after <Services />
+
 export default function App() {
   return (
-    <div className="bg-green-900 text-white min-h-screen flex items-center justify-center">
-      <h1 className="text-5xl font-bold">SolarTop 🌞</h1>
-    </div>
+    <main className="bg-[#FEFCE8] text-[#1a2e1a] overflow-x-hidden">
+      <Navbar />
+      <Hero />
+      <Services />
+      <Projects />
+    </main>
   )
 }
