@@ -3,52 +3,65 @@ import { motion } from 'framer-motion'
 const fade = (delay = 0) => ({
   initial: { opacity: 0, y: 40 },
   animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.7, delay }
+  transition: { duration: 0.8, delay }
 })
+
+const IMG = 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=1600&q=80'
 
 export default function Hero() {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-24 relative overflow-hidden bg-[#FEFCE8]">
+    <section className="min-h-screen relative flex flex-col justify-end overflow-hidden">
 
-      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#ACC6A8]/10 rounded-full blur-[120px] pointer-events-none" />
+      {/* Full bleed background */}
+      <div className="absolute inset-0 z-0">
+        <img src={IMG} alt="Solar" className="w-full h-full object-cover" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#080f08] via-[#080f08]/60 to-[#080f08]/20" />
+      </div>
 
-      <motion.div {...fade(0)} className="flex items-center gap-2 border border-[#ACC6A8] text-[#ACC6A8] text-xs font-bold tracking-[.2em] uppercase px-4 py-2 mb-8">
-        <span className="w-2 h-2 rounded-full bg-[#F4B663] animate-pulse" />
-        Going Green
-      </motion.div>
+      {/* Content */}
+      <div className="relative z-10 px-8 md:px-16 pb-20 pt-40">
 
-      <motion.h1 {...fade(0.15)} className="font-black text-[clamp(3.5rem,12vw,9rem)] leading-none tracking-tight uppercase text-[#1a2e1a]">
-        Power Your <br />
-        <span className="text-[#ACC6A8]">Future</span>{' '}
-        <span className="text-[#F4B663]">Today</span>
-      </motion.h1>
+        {/* Badge */}
+        <motion.div {...fade(0)} className="inline-flex items-center gap-2 bg-white/10 backdrop-blur text-[#c5f135] text-xs font-bold tracking-[.2em] uppercase px-4 py-2 mb-6 rounded-full border border-[#c5f135]/30">
+          <span className="w-2 h-2 rounded-full bg-[#c5f135] animate-pulse" />
+          Next-Generation Solar
+        </motion.div>
 
-      <motion.p {...fade(0.3)} className="mt-6 text-[#7a9b7e] max-w-lg text-lg leading-relaxed">
-        Affordable solar panel installation for homes & businesses. Cut your electricity bill and go green.
-      </motion.p>
+        {/* Heading */}
+        <motion.h1 {...fade(0.15)} className="font-black text-[clamp(3rem,9vw,8rem)] leading-none tracking-tight uppercase max-w-5xl">
+          Clean Solar <br />
+          <span className="text-[#c5f135]">Energy</span>{' '}
+          <span className="italic font-light text-white/60">Solutions</span>
+        </motion.h1>
 
-      <motion.div {...fade(0.45)} className="mt-10 flex gap-4 flex-wrap justify-center">
-        <a href="#contact" className="bg-[#ACC6A8] text-[#1a2e1a] font-bold text-sm tracking-widest uppercase px-8 py-3 hover:bg-[#F4B663] transition-colors">
-          Get Free Quote
-        </a>
-        <a href="#projects" className="border border-[#ACC6A8] text-[#ACC6A8] font-bold text-sm tracking-widest uppercase px-8 py-3 hover:bg-[#ACC6A8]/10 transition-colors">
-          Our Work
-        </a>
-      </motion.div>
+        <motion.p {...fade(0.3)} className="mt-6 text-white/60 max-w-lg text-lg leading-relaxed">
+          Reliable, eco-friendly solar solutions designed to reduce energy costs while maximising environmental impact.
+        </motion.p>
 
-      <motion.div {...fade(0.6)} className="mt-16 grid grid-cols-3 gap-12 border-t border-[#ACC6A8]/30 pt-10">
-        {[
-          { val: '50+', label: 'Installations' },
-          { val: '500kW', label: 'Power Generated' },
-          { val: '100%', label: 'Satisfaction' },
-        ].map(({ val, label }) => (
-          <div key={label}>
-            <div className="text-3xl font-black text-[#F4B663]">{val}</div>
-            <div className="text-xs text-[#7a9b7e] tracking-widest uppercase mt-1">{label}</div>
-          </div>
-        ))}
-      </motion.div>
+        <motion.div {...fade(0.45)} className="mt-8 flex gap-4 flex-wrap">
+          <a href="#contact" className="bg-[#c5f135] text-[#080f08] font-bold text-sm tracking-widest uppercase px-8 py-3 rounded-full hover:opacity-80 transition-opacity flex items-center gap-2">
+            Explore Now ↓
+          </a>
+          <a href="#projects" className="border border-white/20 text-white font-bold text-sm tracking-widest uppercase px-8 py-3 rounded-full hover:bg-white/10 transition-colors">
+            Our Work
+          </a>
+        </motion.div>
 
+        {/* Stats */}
+        <motion.div {...fade(0.6)} className="mt-16 flex gap-12 flex-wrap border-t border-white/10 pt-8">
+          {[
+            { val: '35%', label: 'Reduced Carbon Footprint' },
+            { val: '25%', label: 'Reduced Electricity Bills' },
+            { val: '50+', label: 'Installations Done' },
+          ].map(({ val, label }) => (
+            <div key={label}>
+              <div className="text-4xl font-black text-[#c5f135]">{val}</div>
+              <div className="text-xs text-white/40 tracking-widest uppercase mt-1 max-w-[120px]">{label}</div>
+            </div>
+          ))}
+        </motion.div>
+
+      </div>
     </section>
   )
 }
