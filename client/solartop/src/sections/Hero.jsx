@@ -6,8 +6,7 @@ const fade = (delay = 0) => ({
   transition: { duration: 0.8, delay }
 })
 
-const IMG = 'https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?w=1600&q=80'
-
+const IMG = 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1600&q=80'
 export default function Hero() {
   return (
     <section className="min-h-screen relative flex flex-col justify-end overflow-hidden">
@@ -15,7 +14,7 @@ export default function Hero() {
       {/* Full bleed background */}
       <div className="absolute inset-0 z-0">
         <img src={IMG} alt="Solar" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#080f08] via-[#080f08]/60 to-[#080f08]/20" />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#080f08] via-[#080f08]/30 to-transparent" />
       </div>
 
       {/* Content */}
