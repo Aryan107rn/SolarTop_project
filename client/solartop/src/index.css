@@ -6,3 +6,16 @@
   --color-lime: #c5f135;
   --color-muted: #5a7a5a;
 }
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+* {
+  cursor: none;
+}

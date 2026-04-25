@@ -6,18 +6,22 @@ import FAQLegal from './sections/FAQ'
 import Contact from './sections/Contact'
 import Footer from './sections/Footer'
 import ScrollToTop from './components/ScrollToTop'
+import Marquee from './components/Marquee'
+import CursorGlow from './components/CursorGlow'
 
 export default function App() {
   return (
     <main className="bg-[#FEFCE8] text-[#1a2e1a] overflow-x-hidden">
       <Navbar />
       <Hero />
+      <Marquee />
       <ServicesProjects />
       <About />
       <FAQLegal />
       <Contact />
       <Footer />
       <ScrollToTop />
+      <CursorGlow />
     </main>
   )
 }
