@@ -2,108 +2,125 @@ import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 const faqs = [
-  {
-    q: 'How long does installation take?',
-    a: 'First, we conduct a site survey to evaluate roof condition and load capacity. Based on that, we provide an exact installation timeline.'
-  },
-  {
-    q: 'How much can I save on electricity bills?',
-    a: 'On average, customers save 60–90% on monthly electricity bills depending on system size and usage.'
-  },
-  {
-    q: 'Do you provide warranty?',
-    a: 'Yes. Solar panels come with a performance warranty, and installation includes a workmanship warranty.'
-  },
-  {
-    q: 'Is my roof suitable for solar?',
-    a: 'We perform a free site survey to assess roof angle, shading, and structural strength before recommending a system.'
-  },
-  {
-    q: 'What happens on cloudy days?',
-    a: 'Panels still generate electricity on cloudy days at reduced efficiency. Battery storage can help maintain backup.'
-  },
-  {
-    q: 'Do you help with government subsidies?',
-    a: 'Yes. We assist with PM Surya Ghar Muft Bijli Yojana and other applicable subsidies to reduce upfront cost.'
-  },
+  { q: 'How long does installation take?', a: 'Most residential setups are completed within 1-2 days. Commercial projects may take 3-5 days.' },
+  { q: 'How much can I save on electricity?', a: 'On average customers save 60-90% on monthly bills depending on system size and usage.' },
+  { q: 'Do you provide warranty?', a: 'Yes. Panels come with 25-year performance warranty. Installation carries 5-year workmanship warranty.' },
+  { q: 'Is my roof suitable for solar?', a: 'We do a free site survey to assess your roof before recommending any system.' },
+  { q: 'What happens on cloudy days?', a: 'Panels still generate electricity on cloudy days at reduced efficiency. Battery storage is also available.' },
+  { q: 'Do you help with subsidies?', a: 'Yes! We help you apply for PM Surya Ghar Muft Bijli Yojana and other state subsidies.' },
 ]
 
-export default function FAQ() {
+export default function FAQLegal() {
   const [open, setOpen] = useState(null)
+  const [modalOpen, setModalOpen] = useState(false)
 
   return (
     <section id="faq" className="py-28 px-8 md:px-16 bg-[#FEFCE8]">
-      <div className="max-w-3xl mx-auto">
+      <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
 
-        {/* Heading */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="text-xs font-bold tracking-[.25em] uppercase text-[#c5f135] mb-3"
-        >
-          Got Questions?
-        </motion.p>
+        {/* FAQ */}
+        <div>
+          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
+            className="text-xs font-bold tracking-[.25em] uppercase text-[#F4B663] mb-3">
+            Got Questions?
+          </motion.p>
+          <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+            className="text-4xl font-black uppercase text-[#1a2e1a] mb-10 leading-none">
+            FAQ
+          </motion.h2>
 
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-5xl font-black uppercase text-[#1a2e1a] mb-16 leading-none"
-        >
-          Frequently <span className="text-[#c5f135]">Asked</span>
-        </motion.h2>
+          <div className="flex flex-col gap-3">
+            {faqs.map(({ q, a }, i) => (
+              <motion.div key={i}
+                initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }} transition={{ delay: i * 0.05 }}
+                className="bg-white border border-[#ACC6A8]/20 rounded-xl overflow-hidden">
+                <button onClick={() => setOpen(open === i ? null : i)}
+                  className="w-full flex items-center justify-between px-5 py-4 text-left">
+                  <span className="font-bold text-[#1a2e1a] text-sm">{q}</span>
+                  <span className={`text-[#1a2e1a] text-xl font-black transition-transform duration-300 ${open === i ? 'rotate-45' : ''}`}>+</span>
+                </button>
+                <AnimatePresence>
+                  {open === i && (
+                    <motion.div initial={{ height: 0, opacity: 0 }} animate={{ height: 'auto', opacity: 1 }} exit={{ height: 0, opacity: 0 }} transition={{ duration: 0.3 }}>
+                      <p className="px-5 pb-4 text-[#7a9b7e] text-sm leading-relaxed">{a}</p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            ))}
+          </div>
+        </div>
 
-        {/* FAQ List */}
-        <div className="flex flex-col gap-3">
-          {faqs.map(({ q, a }, i) => (
-            <motion.div
-              key={i}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.05 }}
-              className="bg-white border border-[#ACC6A8]/20 rounded-xl overflow-hidden hover:border-[#c5f135]/40 transition-colors"
-            >
+        {/* Legal */}
+        <div>
+          <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
+            className="text-xs font-bold tracking-[.25em] uppercase text-[#F4B663] mb-3">
+            Legal & Technical
+          </motion.p>
+          <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
+            className="text-4xl font-black uppercase text-[#1a2e1a] mb-10 leading-none">
+            Trust & <span className="text-[#ACC6A8]">Compliance</span>
+          </motion.h2>
 
-              {/* Question */}
-              <button
-                onClick={() => setOpen(open === i ? null : i)}
-                className="w-full flex items-center justify-between px-6 py-5 text-left"
-              >
-                <span className="font-bold text-[#1a2e1a] text-sm">
-                  {q}
-                </span>
-                <span
-                  className={`text-[#1a2e1a] text-xl font-black transition-transform duration-300 ${
-                    open === i ? 'rotate-45' : ''
-                  }`}
-                >
-                  +
-                </span>
+          <div className="flex flex-col gap-4">
+            {[
+              { icon: '🔒', title: 'Privacy Policy', desc: 'We collect only what is needed — your name, contact and site address. Your data is never sold or shared.' },
+              { icon: '📄', title: 'Terms of Service', desc: 'All installs are done after a signed agreement. Payments are milestone-based. Cancellations before install are fully refunded.' },
+            ].map(({ icon, title, desc }) => (
+              <div key={title} className="bg-white border border-[#ACC6A8]/20 rounded-xl p-6">
+                <div className="text-2xl mb-2">{icon}</div>
+                <h3 className="font-black uppercase text-[#1a2e1a] mb-2">{title}</h3>
+                <p className="text-[#7a9b7e] text-sm leading-relaxed">{desc}</p>
+              </div>
+            ))}
+
+            {/* Certifications */}
+            <div className="bg-white border border-[#ACC6A8]/20 rounded-xl p-6">
+              <div className="text-2xl mb-2">🏅</div>
+              <h3 className="font-black uppercase text-[#1a2e1a] mb-3">Certifications</h3>
+              <div className="flex flex-col gap-2 mb-4">
+                {[
+                  { label: 'MNRE Approved', desc: 'Ministry of New & Renewable Energy recognised' },
+                  { label: 'PM Surya Ghar', desc: 'Registered under government solar scheme' },
+                  { label: 'ISO Panels', desc: 'Only ISO certified panels used' },
+                ].map(({ label, desc }) => (
+                  <div key={label} className="flex items-start gap-2">
+                    <span className="text-[#c5f135] font-black">✓</span>
+                    <div>
+                      <p className="text-[#1a2e1a] text-sm font-bold">{label}</p>
+                      <p className="text-[#7a9b7e] text-xs">{desc}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <button onClick={() => setModalOpen(true)}
+                className="w-full bg-[#EEF0D8] border border-[#ACC6A8]/30 text-[#1a2e1a] text-xs font-bold tracking-widest uppercase py-3 rounded-lg hover:bg-[#c5f135]/20 transition-colors">
+                View Certificate →
               </button>
-
-              {/* Answer */}
-              <AnimatePresence initial={false}>
-                {open === i && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: 'auto', opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    <p className="px-6 pb-5 text-[#7a9b7e] leading-relaxed text-sm">
-                      {a}
-                    </p>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-
-            </motion.div>
-          ))}
+            </div>
+          </div>
         </div>
 
       </div>
+
+      {/* Modal */}
+      {modalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm px-4"
+          onClick={() => setModalOpen(false)}>
+          <div className="bg-white rounded-2xl p-8 max-w-lg w-full relative" onClick={e => e.stopPropagation()}>
+            <button onClick={() => setModalOpen(false)}
+              className="absolute top-4 right-4 text-[#7a9b7e] hover:text-[#1a2e1a] text-2xl font-black">✕</button>
+            <h3 className="font-black uppercase text-[#1a2e1a] text-lg mb-6">Government Certificate</h3>
+            <div className="w-full h-64 bg-[#EEF0D8] border-2 border-dashed border-[#ACC6A8]/40 rounded-xl flex flex-col items-center justify-center gap-3">
+              <span className="text-5xl">📋</span>
+              <p className="text-[#7a9b7e] text-sm">Certificate will be displayed here</p>
+              <p className="text-[#ACC6A8] text-xs">Replace with actual file in src/assets/</p>
+            </div>
+            <p className="text-[#7a9b7e] text-xs text-center mt-4">Issued by Ministry of New & Renewable Energy, Govt. of India</p>
+          </div>
+        </div>
+      )}
     </section>
   )
 }

@@ -1,22 +1,22 @@
 import Navbar from './components/Navbar'
 import Hero from './sections/Hero'
-import Services from './sections/Services'
-import Projects from './sections/Projects'
+import ServicesProjects from './sections/Services'
 import About from './sections/About'
-import FAQ from './sections/FAQ'
-import Legal from './sections/Legal'
+import FAQLegal from './sections/FAQ'
+import Contact from './sections/Contact'
+import Footer from './sections/Footer'
 import ScrollToTop from './components/ScrollToTop'
 
 export default function App() {
   return (
-    <main className="bg-[#080f08] text-white overflow-x-hidden">
+    <main className="bg-[#FEFCE8] text-[#1a2e1a] overflow-x-hidden">
       <Navbar />
       <Hero />
-      <Services />
-      <Projects />
+      <ServicesProjects />
       <About />
-      <FAQ />
-      <Legal />
+      <FAQLegal />
+      <Contact />
+      <Footer />
       <ScrollToTop />
     </main>
   )
