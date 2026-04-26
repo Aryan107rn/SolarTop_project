@@ -18,54 +18,100 @@ export default function ServicesProjects() {
   const [tab, setTab] = useState('services')
 
   return (
-    <section id="services" className="py-28 px-8 md:px-16 bg-[#FEFCE8]">
+    <section id="services" className="py-28 px-8 md:px-16 bg-[#E1E6E1]">
       <div className="max-w-5xl mx-auto">
 
-        <motion.p initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
-          className="text-xs font-bold tracking-[.25em] uppercase text-[#F4B663] mb-3">
+        {/* Tag */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="text-xs font-bold tracking-[.25em] uppercase text-[#E88A1A] mb-3"
+        >
           What We Offer
         </motion.p>
 
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-          <motion.h2 initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
-            className="text-5xl font-black uppercase text-[#1a2e1a] leading-none">
-            Services & <span className="text-[#ACC6A8]">Projects</span>
+
+          {/* Heading */}
+          <motion.h2
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-5xl font-black uppercase text-[#22382B] leading-none"
+          >
+            Services & <span className="text-[#1E5939]">Projects</span>
           </motion.h2>
 
           {/* Tabs */}
           <div className="flex gap-2">
             {['services', 'projects'].map(t => (
-              <button key={t} onClick={() => setTab(t)}
-                className={`text-xs font-bold tracking-widest uppercase px-6 py-2 rounded-full transition-colors ${tab === t ? 'bg-[#1a2e1a] text-white' : 'bg-[#EEF0D8] text-[#7a9b7e] hover:bg-[#ACC6A8]/20'}`}>
+              <button
+                key={t}
+                onClick={() => setTab(t)}
+                className={`text-xs font-bold tracking-widest uppercase px-6 py-2 rounded-full transition-colors ${
+                  tab === t
+                    ? 'bg-[#22382B] text-white'
+                    : 'bg-[#F4F7F4] text-[#22382B]/50 hover:bg-[#1E5939]/10'
+                }`}
+              >
                 {t}
               </button>
             ))}
           </div>
+
         </div>
 
         <AnimatePresence mode="wait">
           {tab === 'services' ? (
-            <motion.div key="services"
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
-              className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <motion.div
+              key="services"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="grid grid-cols-1 md:grid-cols-2 gap-4"
+            >
               {services.map(({ icon, title, desc }) => (
-                <div key={title} className="bg-white border border-[#ACC6A8]/20 p-8 rounded-xl hover:border-[#c5f135]/40 transition-colors">
+                <div
+                  key={title}
+                  className="bg-[#F4F7F4] border border-[#1E5939]/10 p-8 rounded-xl hover:border-[#E88A1A]/40 transition-colors"
+                >
                   <div className="text-4xl mb-4">{icon}</div>
-                  <h3 className="text-xl font-black uppercase text-[#1a2e1a] mb-2">{title}</h3>
-                  <p className="text-[#7a9b7e] leading-relaxed">{desc}</p>
+                  <h3 className="text-xl font-black uppercase text-[#22382B] mb-2">
+                    {title}
+                  </h3>
+                  <p className="text-[#22382B]/50 leading-relaxed">
+                    {desc}
+                  </p>
                 </div>
               ))}
             </motion.div>
           ) : (
-            <motion.div key="projects"
-              initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}
-              className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <motion.div
+              key="projects"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              className="grid grid-cols-1 md:grid-cols-3 gap-4"
+            >
               {projects.map(({ title, location, panels, capacity, saving }) => (
-                <div key={title} className="bg-white border border-[#ACC6A8]/20 p-8 rounded-xl hover:border-[#c5f135]/40 transition-colors">
-                  <div className="w-full h-32 bg-[#c5f135]/10 rounded-lg flex items-center justify-center mb-6 text-5xl">☀️</div>
-                  <h3 className="text-xl font-black uppercase text-[#1a2e1a] mb-1">{title}</h3>
-                  <p className="text-xs text-[#F4B663] font-bold tracking-widest uppercase mb-4">📍 {location}</p>
-                  <div className="flex flex-col gap-2 text-sm text-[#7a9b7e]">
+                <div
+                  key={title}
+                  className="bg-[#F4F7F4] border border-[#1E5939]/10 p-8 rounded-xl hover:border-[#E88A1A]/40 transition-colors"
+                >
+                  <div className="w-full h-32 bg-[#1E5939]/10 rounded-lg flex items-center justify-center mb-6 text-5xl">
+                    ☀️
+                  </div>
+
+                  <h3 className="text-xl font-black uppercase text-[#22382B] mb-1">
+                    {title}
+                  </h3>
+
+                  <p className="text-xs text-[#E88A1A] font-bold tracking-widest uppercase mb-4">
+                    📍 {location}
+                  </p>
+
+                  <div className="flex flex-col gap-2 text-sm text-[#22382B]/50">
                     <span>🔲 {panels} Panels Installed</span>
                     <span>⚡ {capacity} Capacity</span>
                     <span>💰 Saving {saving}</span>

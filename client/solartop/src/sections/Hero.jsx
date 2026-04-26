@@ -35,72 +35,67 @@ function useCounter(target, duration = 2000) {
   return count
 }
 
-const IMG = 'https://images.unsplash.com/photo-1509391366360-2e959784a276?w=1600&q=80'
-
 export default function Hero() {
   const c1 = useCounter(50)
   const c2 = useCounter(500)
   const c3 = useCounter(100)
 
   return (
-    <section className="min-h-screen relative flex flex-col justify-end overflow-hidden">
+    <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-24 relative overflow-hidden bg-[#E1E6E1]">
 
-      {/* Background */}
-      <div className="absolute inset-0 z-0">
-        <img src={IMG} alt="Solar" className="w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#080f08] via-[#080f08]/30 to-transparent" />
-      </div>
+      {/* Glow */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#1E5939]/10 rounded-full blur-[120px] pointer-events-none" />
 
       {/* Content */}
-      <div className="relative z-10 px-8 md:px-16 pb-20 pt-40">
+      <div className="relative z-10 max-w-5xl">
 
         {/* Badge */}
         <motion.div
           {...fade(0)}
-          className="inline-flex items-center gap-2 bg-white/10 backdrop-blur text-[#c5f135] text-xs font-bold tracking-[.2em] uppercase px-4 py-2 mb-6 rounded-full border border-[#c5f135]/30"
+          className="flex items-center justify-center gap-2 border border-[#1E5939] text-[#1E5939] text-xs font-bold tracking-[.2em] uppercase px-4 py-2 mb-8 rounded-full"
         >
-          <span className="w-2 h-2 rounded-full bg-[#c5f135] animate-pulse" />
+          <span className="w-2 h-2 rounded-full bg-[#E88A1A] animate-pulse" />
           Next-Generation Solar
         </motion.div>
 
         {/* Heading */}
         <motion.h1
           {...fade(0.15)}
-          className="font-black text-[clamp(3rem,9vw,8rem)] leading-none tracking-tight uppercase max-w-5xl text-white"
+          className="font-black text-[clamp(3.5rem,12vw,9rem)] leading-none tracking-tight uppercase text-[#22382B]"
         >
           Clean Solar <br />
-          <span className="text-[#c5f135]">Energy</span>{' '}
-          <span className="italic font-light text-white/60">Solutions</span>
+          <span className="text-[#1E5939]">Energy</span>{' '}
+          <span className="text-[#E88A1A] italic font-light">Solutions</span>
         </motion.h1>
 
         {/* Description */}
         <motion.p
           {...fade(0.3)}
-          className="mt-6 text-white/60 max-w-lg text-lg leading-relaxed"
+          className="mt-6 text-[#22382B]/50 max-w-lg mx-auto text-lg leading-relaxed"
         >
           Reliable, eco-friendly solar solutions designed to reduce energy costs while maximising environmental impact.
         </motion.p>
 
         {/* Buttons */}
-        <motion.div {...fade(0.45)} className="mt-8 flex gap-4 flex-wrap">
+        <motion.div {...fade(0.45)} className="mt-8 flex gap-4 flex-wrap justify-center">
           <a
             href="#contact"
-            className="bg-[#c5f135] text-[#080f08] font-bold text-sm tracking-widest uppercase px-8 py-3 rounded-full hover:opacity-80 transition-opacity flex items-center gap-2"
+            className="bg-[#1E5939] text-white font-bold text-sm tracking-widest uppercase px-8 py-3 rounded-full hover:bg-[#E88A1A] transition-colors"
           >
             Explore Now ↓
           </a>
           <a
             href="#projects"
-            className="border border-white/20 text-white font-bold text-sm tracking-widest uppercase px-8 py-3 rounded-full hover:bg-white/10 transition-colors"
+            className="border border-[#1E5939] text-[#1E5939] font-bold text-sm tracking-widest uppercase px-8 py-3 rounded-full hover:bg-[#1E5939]/10 transition-colors"
           >
             Our Work
           </a>
         </motion.div>
 
-        {/* Stats (UPDATED) */}
+        {/* Stats */}
         <motion.div
           {...fade(0.6)}
-          className="mt-16 grid grid-cols-3 gap-12 border-t border-[#ACC6A8]/30 pt-10"
+          className="mt-16 grid grid-cols-3 gap-12 border-t border-[#1E5939]/20 pt-10"
         >
           {[
             { val: c1, suffix: '+', label: 'Installations' },
@@ -108,10 +103,10 @@ export default function Hero() {
             { val: c3, suffix: '%', label: 'Satisfaction' },
           ].map(({ val, suffix, label }) => (
             <div key={label}>
-              <div className="text-3xl font-black text-[#F4B663]">
+              <div className="text-3xl font-black text-[#E88A1A]">
                 {val}{suffix}
               </div>
-              <div className="text-xs text-[#7a9b7e] tracking-widest uppercase mt-1">
+              <div className="text-xs text-[#22382B]/50 tracking-widest uppercase mt-1">
                 {label}
               </div>
             </div>
