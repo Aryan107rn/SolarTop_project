@@ -44,7 +44,7 @@ export default function Hero() {
 
   return (
     <section 
-      className="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-24 relative overflow-hidden bg-black/50 bg-blend-overlay bg-cover bg-center"
+      className="min-h-screen flex flex-col items-center justify-center text-center px-6 pt-24 relative overflow-hidden bg-cover bg-center"
       style={{ backgroundImage: `url(${heroBg})` }}
     >
 
