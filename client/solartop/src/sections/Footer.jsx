@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-
+import { FaFacebookF, FaInstagram, FaYoutube } from 'react-icons/fa'
 export default function Footer() {
   return (
     <footer className="bg-[#1a2e1a] text-white px-8 md:px-16 pt-20 pb-8">
@@ -17,18 +17,18 @@ export default function Footer() {
               Local solar installation experts. Making clean energy affordable for every home and business.
             </p>
             {/* Socials */}
-            <div className="flex gap-3 mt-6">
-              {[
-                { label: 'FB', href: '#' },
-                { label: 'IG', href: '#' },
-                { label: 'YT', href: '#' },
-              ].map(({ label, href }) => (
-                <a key={label} href={href}
-                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-xs font-black text-white/40 hover:border-[#c5f135] hover:text-[#c5f135] transition-colors">
-                  {label}
-                </a>
-              ))}
-            </div>
+           <div className="flex gap-3 mt-6">
+  {[
+    { icon: <FaFacebookF />, href: '#' },
+    { icon: <FaInstagram />, href: '#' },
+    { icon: <FaYoutube />, href: '#' },
+  ].map(({ icon, href }, i) => (
+    <a key={i} href={href}
+      className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:border-[#c5f135] hover:text-[#c5f135] hover:bg-[#c5f135]/10 transition-all duration-300">
+      {icon}
+    </a>
+  ))}
+</div>
           </div>
 
           {/* Quick Links */}
