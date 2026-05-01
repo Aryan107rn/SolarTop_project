@@ -3,7 +3,7 @@ export default function Navbar() {
     <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-8 py-4 backdrop-blur-md bg-[#E1E6E1]/80 border-b border-[#1E5939]/10">
       
       <a href="#" className="font-black text-2xl tracking-widest text-[#1E5939]">
-        SOLAR<span className="text-[#E88A1A]">TOP</span>
+        SOLAR<span className="text-[#E88A1A]">JUNCTION</span>
       </a>
 
       <ul className="hidden md:flex gap-2 text-xs font-semibold tracking-widest uppercase">

@@ -12,7 +12,7 @@ export default function Footer() {
           {/* Brand */}
           <div className="md:col-span-2">
             <a href="#" className="font-black text-3xl tracking-widest text-[#E88A1A]">
-              SOLAR<span className="text-white">TOP</span>
+              SOLAR<span className="text-white">JUNCTION</span>
             </a>
 
             <p className="text-white/40 text-sm leading-relaxed mt-4 max-w-xs">
