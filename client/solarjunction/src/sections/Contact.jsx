@@ -2,17 +2,59 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', phone: '', email: '', message: '' })
+  const [form, setForm] = useState({
+    name: '',
+    phone: '',
+    email: '',
+    message: ''
+  })
 
-  const handle = e => setForm({ ...form, [e.target.name]: e.target.value })
+  const [loading, setLoading] = useState(false)
+  const [sent, setSent] = useState(false)
+
+  const handle = (e) =>
+    setForm({ ...form, [e.target.name]: e.target.value })
+
+  const handleSubmit = async () => {
+    if (!form.name || !form.phone || !form.email || !form.message) {
+      alert('Please fill all fields!')
+      return
+    }
+
+    setLoading(true)
+
+    try {
+      const res = await fetch('http://localhost:5000/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form)
+      })
+
+      const data = await res.json()
+
+      if (data.success) {
+        setSent(true)
+        setForm({ name: '', phone: '', email: '', message: '' }) // reset form
+      } else {
+        alert('Something went wrong. Try again.')
+      }
+    } catch {
+      alert('Server not reachable. Make sure backend is running.')
+    }
+
+    setLoading(false)
+  }
 
   return (
     <section id="contact" className="py-28 px-8 md:px-16 bg-[#F4F7F4]">
       <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
 
         {/* Left */}
-        <motion.div initial={{ opacity: 0, x: -40 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }}>
-          
+        <motion.div
+          initial={{ opacity: 0, x: -40 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+        >
           <p className="text-xs font-bold tracking-[.25em] uppercase text-[#E88A1A] mb-3">
             Get In Touch
           </p>
@@ -29,7 +71,7 @@ export default function Contact() {
             {[
               { icon: '📞', label: 'Phone', value: '+91 98765 43210' },
               { icon: '💬', label: 'WhatsApp', value: '+91 98765 43210' },
-              { icon: '📧', label: 'Email', value: 'hello@solartop.in' },
+              { icon: '📧', label: 'Email', value: 'solarjunctionllp@gmail.com' },
               { icon: '📍', label: 'Location', value: 'Nagpur, Maharashtra' },
             ].map(({ icon, label, value }) => (
               <div key={label} className="flex items-center gap-4">
@@ -57,7 +99,6 @@ export default function Contact() {
           >
             <span>💬</span> Chat on WhatsApp
           </a>
-
         </motion.div>
 
         {/* Right - Form */}
@@ -67,7 +108,6 @@ export default function Contact() {
           viewport={{ once: true }}
           className="bg-white border border-[#1E5939]/10 rounded-2xl p-8"
         >
-
           <h3 className="font-black uppercase text-[#22382B] text-xl mb-6">
             Request Free Quote
           </h3>
@@ -111,14 +151,16 @@ export default function Contact() {
             </div>
 
             <button
-              onClick={() => alert('Thanks! We will contact you soon.')}
-              className="w-full bg-[#1E5939] text-white font-bold text-sm tracking-widest uppercase py-4 rounded-full hover:bg-[#E88A1A] transition-colors mt-2"
+              onClick={handleSubmit}
+              disabled={loading || sent}
+              className="w-full bg-[#1E5939] text-white font-bold text-sm tracking-widest uppercase py-4 rounded-full hover:bg-[#E88A1A] transition-colors mt-2 disabled:opacity-60"
             >
-              Send Request →
+              {sent ? '✅ Request Sent!' : loading ? 'Sending...' : 'Send Request →'}
             </button>
 
           </div>
         </motion.div>
+
       </div>
     </section>
   )

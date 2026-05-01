@@ -24,7 +24,7 @@ export default function About() {
             </h2>
 
             <p className="text-[#22382B]/50 leading-relaxed mb-4">
-              SolarTop is a local solar installation firm run by a passionate solar fitter with hands-on experience in residential and commercial setups.
+              SolarJunction is a local solar installation firm run by a passionate solar fitter with hands-on experience in residential and commercial setups.
             </p>
 
             <p className="text-[#22382B]/50 leading-relaxed mb-8">

@@ -65,7 +65,7 @@ export default function Footer() {
 
             <ul className="flex flex-col gap-3 text-sm text-white/40">
               <li>📞 +91 98765 43210</li>
-              <li>📧 hello@solartop.in</li>
+              <li>📧 solarjunctionllp@gmail.com</li>
               <li>📍 Nagpur, Maharashtra</li>
             </ul>
 
@@ -83,7 +83,7 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4 pt-8 text-xs text-white/20">
-          <p>© 2025 SolarTop. All rights reserved.</p>
+          <p>© 2025 SolarJunction. All rights reserved.</p>
 
           <div className="flex gap-6">
             <a href="#legal" className="hover:text-white/60 transition-colors">
